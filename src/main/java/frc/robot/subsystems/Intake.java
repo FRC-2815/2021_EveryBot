@@ -18,6 +18,10 @@ public class Intake extends SubsystemBase {
     intakeRoller.set(0);
   }
 
+  public void set(double power) {
+    intakeRoller.set(power);
+  }
+
   public void intakeIn() {
     intakeRoller.set(1);
   }
