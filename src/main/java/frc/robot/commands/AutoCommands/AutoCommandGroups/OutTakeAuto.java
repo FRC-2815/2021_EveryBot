@@ -10,7 +10,7 @@ import frc.robot.subsystems.Intake;
 public class OutTakeAuto extends SequentialCommandGroup{
 
     public OutTakeAuto(DriveTrain driveTrain, Intake intake) {
-        Timer.delay(7);
+        Timer.delay(5);
         addCommands(new AutoEngageIntake(intake, -1, 3));
         addCommands(new AutoDrive(driveTrain, -1, 0, 2));
     }
