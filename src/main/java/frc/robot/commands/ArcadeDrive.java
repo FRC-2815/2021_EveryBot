@@ -26,8 +26,39 @@ public class ArcadeDrive extends CommandBase {
 
     @Override
     public void execute() {
-        driveTrain.driveArcade(leftStick.getAsDouble(), rightStick.getAsDouble());
-    }
+        double forwardsValue = -leftStick.getAsDouble();
+        double turnValue = rightStick.getAsDouble() * .8;
+
+        double forwardsNegation = 1.0;
+        double turnNegation = 1.0;
+
+        if (forwardsValue < 0.0) {
+            forwardsNegation = -1.0;
+        }
+    
+        if (turnValue < 0.0) {
+            turnNegation = -1.0;
+        }
+        if (Math.abs(forwardsValue) < .05) {
+            forwardsValue = 0.0;
+            }
+
+            if (Math.abs(turnValue) < .05) {
+            turnValue = 0.0;
+            }
+
+            if (forwardsValue < 0.0) {
+            forwardsNegation = -1.0;
+            }
+
+            if (turnValue < 0.0) {
+            turnNegation = -1.0;
+            }
+
+            driveTrain.driveArcade(
+                Math.pow(Math.abs(forwardsValue), 1.5) * forwardsNegation,
+                Math.pow(Math.abs(turnValue), 1.5) * turnNegation);
+        }
 
     @Override
     public void end(boolean interrupted) {
